@@ -10,6 +10,9 @@ dotenv.config();
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  // Forward desctructured req recieved from express to context.
+  // Now we can access the req body in our context.
+  context: ({ req }) => ({ req }),
 });
 
 const CONNECTION_URL = process.env.CONNECTION_URL;
